@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <div class="container"></div>
+    </section>
+    <script>
+      let container = document.querySelector(".container");
+
+      // Create 144 elements
+      for (let i = 1; i <= 144; i++) {
+        let dot = document.createElement("div");
+        dot.classList.add("element");
+        container.appendChild(dot);
+      }
+
+      let dotAll = document.querySelectorAll(".element");
+
+      // Define the animation with color changes
+      anime
+        .timeline({
+          targets: dotAll,
+          easing: "easeInOutExpo",
+          loop: true,
+          delay: anime.stagger(20),
+        })
+        .add({
+          scale: 0.1,
+          backgroundColor: () => {
+            // Random colors
+            return `hsl(${anime.random(0, 360)}, 100%, 50%)`;
+          },
+          boxShadow: () => {
+            let color = `hsl(${anime.random(0, 360)}, 100%, 50%)`;
+            return `0 0 10px ${color}, 0 0 20px ${color}, 0 0 40px ${color}`;
+          },
+          duration: () => anime.random(500, 3000),
+        })
+        .add({
+          scale: 1,
+          backgroundColor: () => {
+            return `hsl(${anime.random(0, 360)}, 100%, 50%)`;
+          },
+          boxShadow: () => {
+            let color = `hsl(${anime.random(0, 360)}, 100%, 50%)`;
+            return `0 0 10px ${color}, 0 0 20px ${color}, 0 0 40px ${color}`;
+          },
+          duration: () => anime.random(500, 3000),
+        });
+    </script>
+  </body>
+</html>

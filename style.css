@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #001300;
+  animation: animateColor 5s linear infinite;
+}
+
+@keyframes animateColor {
+  0% {
+    filter: hue-rotate(0 deg);
+  }
+
+  100% {
+    filter: hue-rotate(360 deg);
+  }
+}
+.container {
+  position: relative;
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.container .element {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: #ffffff; /* Default neutral color */
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ffffff;
+  border-radius: 50%; /* Optional for circular dots */
+}
